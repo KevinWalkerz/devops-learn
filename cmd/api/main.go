@@ -49,12 +49,12 @@ func main() {
 			w.WriteHeader(http.StatusServiceUnavailable)
 			_ = json.NewEncoder(w).Encode(map[string]string{
 				"status": "unhealthy",
-				"error":  "database unreachable",
+				"error":  "database unreachable version 3 4 5",
 			})
 			return
 		}
 		w.Header().Set("Content-Type", "application/json")
-		_ = json.NewEncoder(w).Encode(map[string]string{"status": "ok"})
+		_ = json.NewEncoder(w).Encode(map[string]string{"status": "ok version 3 4 5"})
 	})
 	notes.NewHandler(notes.NewStore(pool)).Register(mux)
 
