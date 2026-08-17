@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - feature/**
 
 jobs:
   test:
@@ -24,3 +23,6 @@ jobs:
 
       - name: Run Tests
         run: go test ./...
+      
+      - name: Build Docker Image
+        run: docker build -t devops-lab:${{ github.sha }} .
